@@ -38,7 +38,7 @@
                 <select class="form-control select-multiple" name="customers[]" id="customers" multiple="multiple">
                     @foreach($customers as $c)
                         <option value="{{ $c->id }}"
-                            @if(count(@$record->users) > 0) 
+                            @if(!empty(@$record->users)) 
                                 @foreach(@$record->users as $u)
                                     @if($c->id == $u->id) 
                                         selected = 'selected'     
