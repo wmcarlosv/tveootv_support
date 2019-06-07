@@ -69,6 +69,7 @@ class MessagesController extends Controller
         }
 
         if($object->save()){
+            $object->users()->attach($request->input('customers'));
             flash("Registro insertado con Exito!!")->success();
         }else{
             flash("Error al insertar el Regisro!!")->error();
@@ -137,6 +138,9 @@ class MessagesController extends Controller
         }
 
         if($object->save()){
+
+            $object->users()->detach();
+            $object->users()->attach($request->input('customers'));
             flash("Registro Actualizado con Exito!!")->success();
         }else{
             flash("Error al Actualizar el Regisro!!")->error();

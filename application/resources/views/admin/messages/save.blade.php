@@ -37,7 +37,16 @@
                 <label for="customers">Clientes: </label>
                 <select class="form-control select-multiple" name="customers[]" id="customers" multiple="multiple">
                     @foreach($customers as $c)
-                        <option value="{{ $c->id }}">{{ $c->name.' '.$c->email }}</option>
+                        <option value="{{ $c->id }}"
+                            @if(count(@$record->users) > 0) 
+                                @foreach(@$record->users as $u)
+                                    @if($c->id == $u->id) 
+                                        selected = 'selected'     
+                                        @break 
+                                    @endif
+                                @endforeach
+                            @endif
+                        >{{ $c->name.'['.$c->email.']' }}</option>
                     @endforeach
                 </select>
             </div>

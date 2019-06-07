@@ -20,7 +20,7 @@ class CreateMessageUsersTable extends Migration
             $table->boolean('isread')->nullable(false)->default(false);
             $table->timestamps();
 
-            $table->foreign('message_id')->references('id')->on('messages')->onUpdate('restrict')->onDelete('restrict');
+            $table->foreign('message_id')->references('id')->on('messages')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('restrict')->onDelete('restrict');
         });
     }

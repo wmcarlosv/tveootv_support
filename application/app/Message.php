@@ -11,10 +11,6 @@ class Message extends Model
     protected $fillable = ['user_id','title','description'];
 
     public function users(){
-    	return $this->belongsToMany('App\User','message_users');
-    }
-
-    public function attachments(){
-    	return $this->belongsTo('App\Attachment');
+    	return $this->belongsToMany('App\User','message_users',"message_id","user_id");
     }
 }
